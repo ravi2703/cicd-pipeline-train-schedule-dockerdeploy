@@ -37,10 +37,9 @@ pipeline {
                      app.push("latest")
                       
                   }
-               }
-            }
-       }      
-       
-    }    
+              }
+          }      
+      }
+   }    
  }
                                        
