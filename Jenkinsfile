@@ -26,15 +26,15 @@ pipeline {
         }
                                        
       }
-      stage('Docker Push'){
-            when{
-                branch 'master'                                
-            }
-            steps{
-                script{
-                  docker.withRegistery('https://registey.hub.docker.com','docker_hub_login') {
-                      app.push("${env.BUILD_NUMBER)")
-                      app.push("latest")
+      stage('Docker Push Image') {
+          when{
+          branch 'master'                                
+          }
+          steps{
+             script{
+                 docker.withRegistery('https://registey.hub.docker.com','docker_hub_login') {
+                     app.push("${env.BUILD_NUMBER)")
+                     app.push("latest")
                       
                   }
                }
