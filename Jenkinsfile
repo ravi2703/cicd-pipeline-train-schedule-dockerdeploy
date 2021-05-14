@@ -15,7 +15,7 @@ pipeline {
             }
             steps {
                 script {
-                    app = docker.build("rawi27/tain-schedule"
+                    app = docker.build("rawi27/tain-schedule")
                     app.inside {
                         sh 'echo $(curl localhost:8080)'
                     }
@@ -29,20 +29,18 @@ pipeline {
       stage('Docker Push'){
             when{
                 branch 'master'                                
-      
             }
-          steps{
-              script{
+            steps{
+                script{
                   docker.withRegistery('https://registey.hub.docker.com','docker_hub_login') {
                       app.push("${env.BUILD_NUMBER)")
                       app.push("latest")
                       
                   }
-              }
-           }
-        }      
+               }
+            }
+       }      
        
-     }    
-                                     
-}
+    }    
+ }
                                        
